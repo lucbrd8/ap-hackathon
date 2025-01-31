@@ -45,9 +45,11 @@ const int HEIGHT = 7;
 int playerX = WIDTH / 2;
 int playerY = HEIGHT / 2;
 
+
+Player joueur(4, 4, 100);
 // Fonction pour dessiner le donjon et le joueur
 void draw(const std::vector<std::string> &map) {
-  Player joueur(0, 0, 100);
+
   system("clear"); // Utiliser "cls" sous Windows
   for (int y = 0; y < HEIGHT; ++y) {
     for (int x = 0; x < WIDTH; ++x) {
@@ -61,7 +63,7 @@ void draw(const std::vector<std::string> &map) {
 }
 
 int main() {
-  Player joueur(0, 0, 100);
+
 
   std::vector<std::string> map(HEIGHT, std::string(WIDTH, '.'));
 
@@ -76,7 +78,7 @@ int main() {
       case 'z': if (joueur.position_y > 0) joueur.position_y--; break;
       case 's': if (joueur.position_y < HEIGHT - 1) joueur.position_y++; break;
       case 'q': if (joueur.position_x > 0) joueur.position_x--; break;
-      case 'd': if (joueur.position_x < WIDTH - 1) joueur.position_y++; break;
+      case 'd': if (joueur.position_x < WIDTH - 1) joueur.position_x++; break;
     }
   }
 
