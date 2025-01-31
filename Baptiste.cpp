@@ -14,7 +14,7 @@ void draw(const std::vector<std::string> &map) {
     system("clear"); // Utiliser "cls" sous Windows
     for (int y = 0; y < HEIGHT; ++y) {
         for (int x = 0; x < WIDTH; ++x) {
-            if (x == playerX && y == playerY)
+            if (x == Player.position_x && y == Player.position_y)
                 std::cout << '@'; // Symbole du joueur
             else
                 std::cout << map[y][x];
@@ -34,10 +34,10 @@ int main() {
 
         if (ch == 'f') break;
         switch (ch) {
-            case 'z': if (playerY > 0) playerY--; break;
-            case 's': if (playerY < HEIGHT - 1) playerY++; break;
-            case 'q': if (playerX > 0) playerX--; break;
-            case 'd': if (playerX < WIDTH - 1) playerX++; break;
+            case 'z': if (Player.position_y > 0) playerY--; break;
+            case 's': if (Player.position_y < HEIGHT - 1) playerY++; break;
+            case 'q': if (Player.position_x > 0) playerX--; break;
+            case 'd': if (Player.position_x < WIDTH - 1) playerX++; break;
         }
     }
 
