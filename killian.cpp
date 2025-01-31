@@ -1,4 +1,4 @@
-
+#include <cstdlib>
 
 
 
@@ -11,23 +11,29 @@ public:
   int health;
 public:
   Player(int position_x,int position_y,int health) : position_x(position_x),position_y(position_y),health(health){}
-  void goRight() {
 
-
-  }
-  void goLeft() {
-
-
-
-  }
-  void goUp() {
-
-  }
-  void goDown() {
-
-
-  }
 };
+
+class Bat {
+public:
+  int pos_x;
+  int pos_y;
+  int health;
+  Bat(int pos_x, int pos_y, int health): pos_x(pos_x), pos_y(pos_y), health(health){}
+  void apparition() {
+     //NumberRoom
+    int pos_x = Salle.Origine[0] + Salle.longueur/2;
+    int pos_y = Salle.Origine[1] + Salle.largeur/2;
+
+  }
+  void gotHit() {
+
+
+  }
+
+
+};
+
 
 
 
@@ -38,8 +44,8 @@ public:
 #include <vector>
 
 // Dimensions du donjon
-const int WIDTH = 6;
-const int HEIGHT = 7;
+const int WIDTH = 20;
+const int HEIGHT = 20;
 
 // Position du joueur
 int playerX = WIDTH / 2;
