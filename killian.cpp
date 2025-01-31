@@ -9,8 +9,9 @@ public:
   int position_x;
   int position_y;
   int health;
+  int money;
 public:
-  Player(int position_x,int position_y,int health) : position_x(position_x),position_y(position_y),health(health){}
+  Player(int position_x,int position_y,int health,int money) : position_x(position_x),position_y(position_y),health(health), money(money){}
 
 };
 
@@ -27,7 +28,17 @@ public:
 
   }
   void gotHit() {
+    health = health - 15;
+    if (health =< 0) {
+      Player.giveMoney();
+      Bat.Death();
+    }
 
+    void Death() {
+      pos_x = 1000;
+      pos_y = 1000;
+
+    }
 
   }
 
@@ -52,9 +63,12 @@ int playerX = WIDTH / 2;
 int playerY = HEIGHT / 2;
 
 
+
+
 Player joueur(4, 4, 100);
 // Fonction pour dessiner le donjon et le joueur
 void draw(const std::vector<std::string> &map) {
+
 
   system("clear"); // Utiliser "cls" sous Windows
   for (int y = 0; y < HEIGHT; ++y) {
