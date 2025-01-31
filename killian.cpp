@@ -1,6 +1,23 @@
 #include <cstdlib>
 
 
+#include<iostream>
+#include<array>
+#include<vector>
+
+using namespace std;
+
+
+class Salle {
+public:
+  int longueur;
+  int largeur; // nombre de cases vides +2 ( prend en compte les murs)
+  array<int,2> origin ; // en haut à gauche du rectangle ,  en 0 de l'array la coordonnée horizontale ( longueur) , en 1 de l'array la verticale (largeur)
+  vector<array<int,2> > entrances; // liste des coordonnées des entrées, avec le 0 à origine
+  Salle(int longueur , int largeur,array<int, 2> origin,vector<array<int,2> > entrances): longueur(longueur),largeur(largeur),origin(origin),  entrances(entrances) {}
+};
+
+Salle s(10,10,{4,4},{4,4});
 
 
 
@@ -18,6 +35,8 @@ public:
   }
 };
 
+Player joueur(4, 4, 100,20);
+
 class Bat {
 public:
   int pos_x;
@@ -26,27 +45,37 @@ public:
   Bat(int pos_x, int pos_y, int health): pos_x(pos_x), pos_y(pos_y), health(health){}
   void apparition() {
      //NumberRoom
-    int pos_x = Salle.Origine[0] + Salle.longueur/2;
-    int pos_y = Salle.Origine[1] + Salle.largeur/2;
+    int pos_x = s.origin[0] + s.longueur/2;
+    int pos_y = s.origin[1] + s.largeur/2;
+
+  }
+
+  void Death() {
+    pos_x = 1000;
+    pos_y = 1000;
 
   }
   void gotHit() {
     health = health - 15;
     if (health =< 0) {
-      Player.giveMoney();
-      Bat.Death();
+      joueur.giveMoney();
+      Death();
     }
 
-    void Death() {
-      pos_x = 1000;
-      pos_y = 1000;
 
-    }
 
   }
 
 
 };
+
+
+
+
+
+
+
+
 
 
 
@@ -68,7 +97,7 @@ int playerY = HEIGHT / 2;
 
 
 
-Player joueur(4, 4, 100);
+
 // Fonction pour dessiner le donjon et le joueur
 void draw(const std::vector<std::string> &map) {
 
