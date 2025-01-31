@@ -1,6 +1,7 @@
 #include "simon.h"
 #include <iostream>
 #include<array>
+#include <random>
 using namespace std;
 // Created by lasma o
 // n 31/01/2025.
@@ -50,8 +51,20 @@ void printDonjon() {
 
 
 int main(){
+    int n = 10;   // Nombre d'essais
+    double p = 0.5; // Probabilité de succès
+
+    // Générateur de nombres aléatoires
+    std::random_device rd;  // Génère une seed aléatoire
+    std::mt19937 gen(rd()); // Générateur Mersenne Twister
+
+    // Définition de la distribution binomiale
+    std::binomial_distribution<int> distribution(n, p);
+
+    // Génération d'un nombre suivant la loi binomiale
+    int valeur = distribution(gen);
     initialize();
-    Salle Room1 = Salle(5,5,{10,10},{{0,4},{5,2}});
+    Salle Room1 = Salle(5,5,{10,10},{{0,4},{3,0}});
     addroom(Room1);
     printDonjon();
 
