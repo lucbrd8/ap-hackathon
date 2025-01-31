@@ -12,7 +12,10 @@ public:
   int money;
 public:
   Player(int position_x,int position_y,int health,int money) : position_x(position_x),position_y(position_y),health(health), money(money){}
+  void giveMoney() {
+    money = money +10;
 
+  }
 };
 
 class Bat {
