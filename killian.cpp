@@ -17,7 +17,7 @@ public:
   Salle(int longueur , int largeur,array<int, 2> origin,vector<array<int,2> > entrances): longueur(longueur),largeur(largeur),origin(origin),  entrances(entrances) {}
 };
 
-Salle s(10,10,{4,4},{4,4});
+Salle s(10,10,{4,4},[4,4]);
 
 
 
@@ -31,7 +31,6 @@ public:
   Player(int position_x,int position_y,int health,int money) : position_x(position_x),position_y(position_y),health(health), money(money){}
   void giveMoney() {
     money = money +10;
-
   }
 };
 
@@ -57,7 +56,7 @@ public:
   }
   void gotHit() {
     health = health - 15;
-    if (health =< 0) {
+    if (health < 0) {
       joueur.giveMoney();
       Death();
     }
